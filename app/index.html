@@ -1,0 +1,71 @@
+<!doctype html>
+<html ng-app="imslpApp">
+<head>
+	<title>Odhecaton</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <link rel=stylesheet href="css/app.css">
+</head>
+<body ng-controller="NavCtrl" layout="column">
+
+  <!-- Toolbar -->
+  <md-toolbar layout="row" layout-align="center center">
+    <div class="md-toolbar-tools" flex="30" flex-sm="15">
+      <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+        <md-icon aria-label="Menu" md-svg-icon="images/menu.svg"></md-icon>
+      </md-button>
+      <h1 hide-sm><a href="/">Odhecaton</a></h1>
+    </div>
+
+    <!-- Search -->
+    <div ng-controller="SearchCtrl" flex="70" flex-sm="85" layout-padding>
+      <md-autocomplete
+          md-selected-item="selectedItem"
+          md-search-text="searchText"
+          md-search-text-change="searchTextChange(searchText)"
+          md-selected-item-change="selectedItemChange(selectedItem)"
+          md-items="item in items"
+          md-item-text="item.title|replace:'Category:'"
+          md-min-length="1"
+          md-menu-class="search-menu"
+          spellcheck="false"
+          placeholder="Search IMSLP">
+        <md-item-template>
+          <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.title|replace:'Category:'}}</span>
+        </md-item-template>
+      </md-autocomplete>
+    </div>
+  </md-toolbar>
+
+  <div layout="row" flex>
+    <!-- Sidebar -->
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+      <img id="logo" src="http://imslp.org/imslp.png">
+      <md-list>
+        <md-list-item ng-repeat="item in menuItems" ng-click="nav($index)">
+          {{item.title}}
+        </md-list-item>
+      </md-list>
+    </md-sidenav>
+
+    <!-- Content -->
+    <md-content ng-view class="" layout-padding flex>
+    </md-content>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

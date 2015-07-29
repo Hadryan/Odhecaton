@@ -1,0 +1,69 @@
+#logo {
+	width: 170px;
+	height: 170px;
+	padding: 15px;
+}
+.site-sidenav,
+.site-sidenav.md-locked-open-add-active,
+.site-sidenav.md-locked-open {
+  width: 224px;
+  min-width: 224px;
+  max-width: 224px;
+}
+.md-autocomplete-suggestions li .highlight {
+	font-weight: bold;
+}
+.search-menu {
+	item-height: 48px;
+	max-height: 768px !important;
+}
+
+/* IMSLP page styles */
+
+.imslp-page .wp_header,
+.imslp-page .inline-rating,
+.imslp-page .noanon,
+.imslp-page .we_file_info,
+.imslp-page .we_file_info2,
+.imslp-page .we_file_dlarrow,
+.imslp-page .we_edition_info,
+/*.imslp-page .nojs,*/
+.imslp-page .nojs2,
+.imslp-page .jsonly,
+.imslp-page .wm-headline,
+.imslp-page .cp_mainlinks,
+.imslp-page .toccolours,
+.imslp-page .editsection,
+.imslp-page .multicol td:nth-of-type(1),
+.imslp-page .multicol td:nth-of-type(2),
+.imslp-page .hidden {
+	display: none;
+}
+.imslp-page a {
+	text-decoration: none;
+}
+.imslp-page a:hover {
+	text-decoration: underline;
+}
+.imslp-page table {
+	border-spacing: 0;
+	width: 100% !important;
+}
+.imslp-page .wi_head,
+.imslp-page .wi_body {
+	margin-bottom: 20px;
+}
+.imslp-page .wi_head th,
+.imslp-page .wi_body th {
+	text-align: left;
+	width: 150px;
+}
+.imslp-page .wi_head td,
+.imslp-page .wi_body td {
+	padding-left: 20px;
+}
+.imslp-page .multicol td:first-of-type {
+	width: 100%;
+}
+
+/* end IMSLP page styles */

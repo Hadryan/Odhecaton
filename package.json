@@ -1,0 +1,24 @@
+{
+  "name": "odhecaton",
+  "version": "0.0.0",
+  "description": "IMSLP mobile app",
+  "author": "Larry Wright",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "grunt": "^0.4.5",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.3",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+
+    "pretest": "npm install",
+    "test": "node_modules/karma/bin/karma start",
+    "test-single-run": "node_modules/karma/bin/karma start --single-run"
+  }
+}
