@@ -8,17 +8,21 @@ angular.module('imslpApp', [
 	'ngRoute',
 	'imslpControllers',
 	'imslpServices',
+	'imslpFilters',
 	'imslpDirectives'
 ])
 
 .config(function($mdThemingProvider, $routeProvider, $sceDelegateProvider, $locationProvider) {
 	$mdThemingProvider.theme('default')
 		.primaryPalette('blue-grey')
-		.accentPalette('amber');
+		.accentPalette('orange');
 
 	$locationProvider.html5Mode(true);
 
 	$routeProvider
+		.when('/', {
+			templateUrl: 'partials/main-view.html'
+		})
 		.when('/category/:pageId', {
 			templateUrl: 'partials/category-view.html'
 		})
@@ -28,12 +32,26 @@ angular.module('imslpApp', [
 		.when('/wiki/Category:categoryTitle', {
 			templateUrl: 'partials/wiki-view.html'
 		})
+		.when('/wiki/File:pageTitle', {
+			templateUrl: 'partials/file-view.html',
+		})
+		.when('/wiki/:pageTitle', {
+			templateUrl: 'partials/page-view.html'
+		})
+		.when('/new-additions', {
+			templateUrl: 'partials/new-additions-view.html'
+		})
+		.when('/favorites', {
+			templateUrl: 'partials/favorites-view.html'
+		})
+		.when('/random', {
+			template: '',
+			controller: 'RandomCtrl'
+		})
 		.otherwise({ redirectTo: '/' });
+		//TODO: make 404 page
 
-	$sceDelegateProvider.resourceUrlWhitelist([
-		'self',
-		'http://imslp.org'
-	]);
+
 
 });
 

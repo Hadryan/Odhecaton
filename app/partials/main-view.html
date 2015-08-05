@@ -1,0 +1,59 @@
+<style>
+md-card h2 {
+  margin: 0 10px;
+}
+.featured-title h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.featured-image {
+  width: 90px;
+  height: 120px;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+}
+a[title="Signature"] {
+  display: none;
+}
+.clear {
+  clear: both;
+}
+</style>
+<md-card id="main-featured" ng-controller="FeaturedCtrl">
+  <h2>Featured</h2>
+  <md-card-content layout="row" ng-cloak>
+      <div class="featured-image" ng-bind-html="featured.image"></div>
+      <div layout="column" layout-align="space-around start" layout-padding>
+        <div class="featured-title" ng-bind-html="featured.title"></div>
+        <md-button class="md-raised md-primary" ng-href="{{'category/' + featured.pageid}}" ng-show="featured.title">More</md-button>
+      </div>
+  </md-card-content>
+  <br class="clear">
+</md-card>
+<md-card id="main-new" ng-controller="NewAdditionsCtrl">
+  <h2>New Additions</h2>
+  <ul>
+    <li ng-repeat="item in items">
+      <a ng-href="{{'page/' + items[$index].pageid}}">{{item.title}}</a>
+    </li>
+  </ul>
+</md-card>
+<md-card id="main-favorites" ng-controller="FavoritesCtrl">
+  <h2>Favorites</h2>
+  <ul>
+    <li ng-repeat="item in items">
+      <a ng-href="{{'page/' + items[$index].pageid}}">{{item.title}}</a>
+    </li>
+  </ul>
+</md-card>
+<md-card id="main-recent" ng-controller="RecentCtrl">
+  <h2>Recent Searches</h2>
+  <ul>
+    <li ng-repeat="item in items">
+      <a ng-href="{{'category/' + items[$index].pageid}}">{{item.title|replace:'Category:'}}</a>
+    </li>
+  </ul>
+</md-card>
