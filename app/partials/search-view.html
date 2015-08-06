@@ -1,0 +1,8 @@
+<div>
+  <md-list>
+    <md-list-item ng-repeat="item in search.items" ng-click="search.itemSelected($index)">
+      {{item.title|replace:'Category:'}}
+      <md-divider></md-divider>
+    </md-list-item>
+  </md-list>
+</div>

@@ -20,26 +20,43 @@ describe('ImslpCtrl', function() {
 	});
 
 	describe('SearchCtrl', function() {
+		var scope, ctrl, httpBackend;
 
 		beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
-			var scope, ctrl, $httpBackend, url;
-			$httpBackend = _$httpBackend_;
-			url = 'http://imslp.org/api.php?format=json&action=query&list=allpages&apnamespace=14&aplimit=10&apprefix=Bach';
+			httpBackend = _$httpBackend_;
 
-			$httpBackend.expectGET(url).respond([
-				{name: 'Bach, Carl Philipp Emanuel', pageid: 123},
-				{name: 'Bach, Johann Sebastian', pageid: 456}
-			]);
+			httpBackend.expect('JSONP', TestData.SearchCtrl.url).respond(TestData.SearchCtrl.data);
 
 			scope = $rootScope.$new();
+			scope.search = {};
 			ctrl = $controller('SearchCtrl', {$scope: scope});
 		}));
 
 		it('SearchCtrl should return search results', inject(function($controller) {
-			// scope.searchTextChange('Bach');
-			$httpBackend.flush();
+			scope.searchTextChange('Bach');
+			httpBackend.flush();
+			expect(scope.search.items.length).toBeGreaterThan(0);
+		}));
+	});
+
+	describe('CategoryCtrl', function() {
+		var scope, ctrl, httpBackend;
+
+		beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+			httpBackend = _$httpBackend_;
+
+			httpBackend.expect('JSONP', TestData.CategoryCtrl.url).respond(TestData.CategoryCtrl.data);
+
+			scope = $rootScope.$new();
+			ctrl = $controller('CategoryCtrl', {$scope: scope});
+		}));
+
+		it('CategoryCtrl should return search results', inject(function($controller) {
+			httpBackend.flush();
 			expect(scope.items.length).toBeGreaterThan(0);
 		}));
 	});
+
+
 
 });

@@ -30,27 +30,41 @@ angular.module('imslpControllers', [
 		{title: 'Random Page', path: 'random'},
 		{title: 'Favorites', path: 'favorites'}
 	];
+
+	$scope.search = {};
 })
 
 /**
  * Search Controller
  */
-.controller('SearchCtrl', function($scope, $element, $location, Imslp, ArrayStorage) {
+.controller('SearchCtrl', function($scope, $location, $timeout, Imslp, ArrayStorage) {
 
-	$scope.items = [];
-
-	$scope.searchTextChange = function(text) {
-		if (!text.length) return;
-		console.log(text);
-		$scope.items = Imslp.allpages({apprefix: text});
+	$scope.searchFocus = function() {
+		if (!$scope.search.active) {
+			$scope.search.active = true;
+			$scope.search.previous = $location.path();
+			$location.path('search');
+		}
 	};
-	$scope.selectedItemChange = function(item) {
+	$scope.searchClose = function() {
+		$scope.search.text = '';
+		$scope.search.items = [];
+		$scope.search.active = false;
+		$location.path($scope.search.previous);
+	};
+	$scope.searchTextChange = function(text) {
+		if (text.length < 1) return;
+		$scope.search.items = Imslp.allpages({apprefix: text});
+	};
+	$scope.search.itemSelected = function(index) {
+		var item = $scope.search.items[index];
 		if (!item) return;
-		$scope.searchText = '';
+		$scope.search.text = '';
+		$scope.search.items = [];
+		$scope.search.active = false;
 		ArrayStorage.add('recent', item);
 		$location.path('category/' + item.pageid);
 	};
-
 })
 
 /**
@@ -116,7 +130,6 @@ angular.module('imslpControllers', [
 	$scope.disabled = false;
 
 	$scope.selected = function(index) {
-		console.log('selected',index)
 		$scope.params = {
 			list: 'categorymembers',
 			cmlimit: 20,
@@ -126,10 +139,9 @@ angular.module('imslpControllers', [
 		};
 		$scope.items = [];
 		$scope.next();
-	}
+	};
 
 	$scope.next = function() {
-		console.log('next',$scope.params.cmcontinue)
 		if ($scope.disabled) return;
 		$scope.disabled = true;
 

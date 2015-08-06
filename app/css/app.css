@@ -9,11 +9,28 @@ html, body {
 	height: 155px;
 	margin: 15px;
 }
+.site-body {
+	min-height: 92vh;
+}
+.site-sidenav,
 .site-sidenav.md-locked-open {
   width: 224px;
   min-width: 224px;
   max-width: 224px;
-  background: #eee;
+  background: #eeefee;
+}
+.search-text {
+	font-size: 16px;
+	border: none;
+	border-radius: 2px;
+}
+.search-close:after {
+	content: '\2a2f';
+	font-size: 28px;
+	color: #666;
+	position: absolute;
+	top: 11px;
+	right: 18px;
 }
 a {
 	text-decoration: none;
@@ -48,7 +65,6 @@ a:hover {
 	margin-top: 0;
 }
 .imslp-page .we_edition_label {
-	margin-bottom: 0;
 	font-weight: bold;
 }
 .imslp-page table {

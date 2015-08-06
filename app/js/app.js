@@ -44,6 +44,9 @@ angular.module('imslpApp', [
 		.when('/favorites', {
 			templateUrl: 'partials/favorites-view.html'
 		})
+		.when('/search', {
+			templateUrl: 'partials/search-view.html'
+		})
 		.when('/random', {
 			template: '',
 			controller: 'RandomCtrl'

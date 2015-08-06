@@ -12,8 +12,8 @@
 <body ng-controller="NavCtrl" layout="column" ng-cloak>
 
   <!-- Toolbar -->
-  <md-toolbar layout="row" layout-align="center center">
-    <div class="md-toolbar-tools" flex="30" flex-sm="15">
+  <md-toolbar class="site-toolbar" layout="row" layout-align="center center">
+    <div class="md-toolbar-tools">
       <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
         <md-icon aria-label="Menu" md-svg-icon="images/menu.svg"></md-icon>
       </md-button>
@@ -21,30 +21,24 @@
     </div>
 
     <!-- Search -->
-    <div ng-controller="SearchCtrl" flex="70" flex-sm="85" layout-padding>
-      <md-autocomplete
-          md-selected-item="selectedItem"
-          md-search-text="searchText"
-          md-search-text-change="searchTextChange(searchText)"
-          md-selected-item-change="selectedItemChange(selectedItem)"
-          md-items="item in items"
-          md-item-text="item.title|replace:'Category:'"
-          md-min-length="1"
-          md-delay="300"
-          md-menu-class="search-menu"
-          spellcheck="false"
-          placeholder="Search IMSLP">
-        <md-item-template>
-          {{item.title|replace:'Category:'}}
-        </md-item-template>
-      </md-autocomplete>
+    <div ng-controller="SearchCtrl" flex="80" layout-padding>
+      <input type="text"
+        class="search-text"
+        placeholder="Search IMSLP"
+        ng-focus="searchFocus()"
+        ng-model="search.text"
+        ng-model-options="{debounce:300}"
+        ng-change="searchTextChange(search.text)"
+        spellcheck="false"
+        layout-fill layout-padding>
+      <span class="search-close" ng-click="searchClose()" ng-show="search.active"></span>
     </div>
   </md-toolbar>
 
-  <div layout="row" flex>
+  <div class="site-body" layout="row">
 
     <!-- Sidenav -->
-    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" flex>
       <img id="logo" src="http://imslp.org/imslp.png" ng-click="toggleSidenav('left')">
       <md-list>
         <md-list-item ng-repeat="item in menuItems" ng-click="nav($index)">
@@ -53,8 +47,9 @@
       </md-list>
     </md-sidenav>
 
-    <md-content ng-view class="" layout-padding flex>
-      <!-- Content -->
+    <!-- Content -->
+    <md-content class="site-content" ng-view layout-padding flex>
+      <!-- from partials -->
     </md-content>
 
   </div>

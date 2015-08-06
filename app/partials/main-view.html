@@ -36,7 +36,7 @@ a[title="Signature"] {
 <md-card id="main-new" ng-controller="NewAdditionsCtrl">
   <h2>New Additions</h2>
   <ul>
-    <li ng-repeat="item in items">
+    <li ng-repeat="item in items | limitTo:8">
       <a ng-href="{{'page/' + items[$index].pageid}}">{{item.title}}</a>
     </li>
   </ul>
