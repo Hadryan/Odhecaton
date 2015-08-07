@@ -30,7 +30,7 @@ angular.module('imslpApp', [
 			templateUrl: 'partials/page-view.html'
 		})
 		.when('/wiki/Category:categoryTitle', {
-			templateUrl: 'partials/wiki-view.html'
+			templateUrl: 'partials/list-view.html'
 		})
 		.when('/wiki/File:pageTitle', {
 			templateUrl: 'partials/file-view.html',
