@@ -28,7 +28,8 @@ angular.module('imslpControllers', [
 		{title: 'Browse Genres', path: 'wiki/Category:Instrument_Composition_Lists'},
 		{title: 'New Additions', path: 'new-additions'},
 		{title: 'Random Page', path: 'random'},
-		{title: 'Favorites', path: 'favorites'}
+		{title: 'Favorites', path: 'favorites'},
+		{title: 'About IMSLP', path: 'wiki/IMSLP:About'}
 	];
 
 	$scope.search = {};
