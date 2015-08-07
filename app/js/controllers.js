@@ -164,7 +164,7 @@ angular.module('imslpControllers', [
 /**
  * NewAdditions Controller
  */
-.controller('NewAdditionsCtrl', function($scope, $location, $routeParams, Imslp, uniqueFilter) {
+.controller('NewAdditionsCtrl', function($scope, $location, $routeParams, Imslp) {
 
 	$scope.title = 'New Additions';
 	$scope.disabled = false;
