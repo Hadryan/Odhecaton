@@ -1,12 +1,12 @@
 <div ng-controller="HtmlCtrl">
-  <h1>{{ page.title | replace:'Category:' }}</h1>
+  <h1>{{ title | replace:'Category:' }}</h1>
   <div class="imslp-page" ng-bind-html="html"></div>
 </div>
 <div ng-controller="CategoryCtrl">
   <h2 ng-show="items.length" style="margin-bottom:0">Compositions</h2>
   <md-list infinite-scroll="next()" infinite-scroll-distance="1" infinite-scroll-disabled="disabled">
     <md-list-item ng-repeat="item in items" ng-click="page($index)">
-      {{ item.title | replace:'\\([^)]+\\)' }}
+      {{ ::item.title | replace:'\\([^)]+\\)' }}
     </md-list-item>
   </md-list>
 </div>

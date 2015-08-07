@@ -2,7 +2,7 @@
   <h1>Favorites</h1>
   <md-list>
     <md-list-item ng-repeat="item in items" ng-click="page($index)">
-      {{item.title}}<favorite favitem="item"></favorite>
+      {{ ::item.title }}<favorite favitem="item"></favorite>
       <md-divider></md-divider>
     </md-list-item>
   </md-list>

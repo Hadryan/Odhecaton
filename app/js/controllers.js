@@ -60,7 +60,6 @@ angular.module('imslpControllers', [
 		var item = $scope.search.items[index];
 		if (!item) return;
 		$scope.search.text = '';
-		$scope.search.items = [];
 		$scope.search.active = false;
 		ArrayStorage.add('recent', item);
 		$location.path('category/' + item.pageid);
@@ -72,7 +71,6 @@ angular.module('imslpControllers', [
  */
 .controller('CategoryCtrl', function($scope, $location, $routeParams, Imslp) {
 
-	$scope.title = '';
 	$scope.items = [];
 	$scope.disabled = false;
 	$scope.params = {
@@ -82,10 +80,6 @@ angular.module('imslpControllers', [
 
 	if ($routeParams.pageId) {
 		$scope.params.cmpageid = $routeParams.pageId;
-	}
-	if ($routeParams.categoryTitle) {
-		$scope.params.cmtitle = 'Category' + $routeParams.categoryTitle;
-		$scope.title = $routeParams.categoryTitle.replace(/[:_]/g, ' ').trim();
 	}
 
 	$scope.next = function() {
@@ -310,6 +304,9 @@ angular.module('imslpControllers', [
 .controller('HtmlCtrl', function($scope, $routeParams, $sce, $location, Imslp) {
 
 	$scope.params = {};
+	$scope.html = '';
+	$scope.title = '';
+
 	if ($routeParams.pageId) {
 		$scope.params.pageid = $routeParams.pageId;
 	}
@@ -319,10 +316,7 @@ angular.module('imslpControllers', [
 
 	Imslp.parse($scope.params, function(data) {
 		if (data.parse) {
-			$scope.page = {
-				title: data.parse.title,
-				pageid: $routeParams.pageId
-			};
+			$scope.title = data.parse.title,
 			$scope.html = $sce.trustAsHtml(data.parse.text['*'].replace(/src="\//g, 'src="http://imslp.org/'));
 		}
 	});

@@ -37,7 +37,7 @@ a[title="Signature"] {
   <h2>New Additions</h2>
   <ul>
     <li ng-repeat="item in items | limitTo:8">
-      <a ng-href="{{'page/' + items[$index].pageid}}">{{item.title}}</a>
+      <a ng-href="{{'page/' + items[$index].pageid}}">{{::item.title}}</a>
     </li>
   </ul>
 </md-card>
@@ -45,7 +45,7 @@ a[title="Signature"] {
   <h2>Favorites</h2>
   <ul>
     <li ng-repeat="item in items">
-      <a ng-href="{{'page/' + items[$index].pageid}}">{{item.title}}</a>
+      <a ng-href="{{'page/' + items[$index].pageid}}">{{::item.title}}</a>
     </li>
   </ul>
 </md-card>
@@ -53,7 +53,7 @@ a[title="Signature"] {
   <h2>Recent Searches</h2>
   <ul>
     <li ng-repeat="item in items">
-      <a ng-href="{{'category/' + items[$index].pageid}}">{{item.title|replace:'Category:'}}</a>
+      <a ng-href="{{'category/' + items[$index].pageid}}">{{::item.title|replace:'Category:'}}</a>
     </li>
   </ul>
 </md-card>
