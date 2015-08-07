@@ -14,7 +14,7 @@ angular.module('imslpControllers', [
 /**
  * Nav Controller
  */
-.controller('NavCtrl', function($scope, $location, $mdSidenav, $cacheFactory){
+.controller('NavCtrl', ['$scope', '$location', '$mdSidenav', function($scope, $location, $mdSidenav){
 	$scope.toggleSidenav = function(menuId) {
 		$mdSidenav(menuId).toggle();
 	};
@@ -33,12 +33,12 @@ angular.module('imslpControllers', [
 	];
 
 	$scope.search = {};
-})
+}])
 
 /**
  * Search Controller
  */
-.controller('SearchCtrl', function($scope, $location, $timeout, Imslp, ArrayStorage) {
+.controller('SearchCtrl', ['$scope', '$location', 'Imslp', 'ArrayStorage', function($scope, $location, Imslp, ArrayStorage) {
 
 	$scope.searchFocus = function() {
 		if (!$scope.search.active) {
@@ -65,12 +65,12 @@ angular.module('imslpControllers', [
 		ArrayStorage.add('recent', item);
 		$location.path('category/' + item.pageid);
 	};
-})
+}])
 
 /**
  * Category Controller
  */
-.controller('CategoryCtrl', function($scope, $location, $routeParams, Imslp) {
+.controller('CategoryCtrl', ['$scope', '$location', '$routeParams', 'Imslp', function($scope, $location, $routeParams, Imslp) {
 
 	$scope.items = [];
 	$scope.disabled = false;
@@ -105,12 +105,12 @@ angular.module('imslpControllers', [
 	$scope.category = function(index) {
 		$location.path('category/' + $scope.items[index].pageid);
 	};
-})
+}])
 
 /**
  * List Controller
  */
-.controller('ListCtrl', function($scope, $location, $routeParams, Imslp) {
+.controller('ListCtrl', ['$scope', '$location', '$routeParams', 'Imslp', function($scope, $location, $routeParams, Imslp) {
 
 	if (!$routeParams.categoryTitle) return;
 
@@ -154,12 +154,12 @@ angular.module('imslpControllers', [
 	$scope.category = function(index) {
 		$location.path('category/' + $scope.items[index].pageid);
 	};
-})
+}])
 
 /**
  * NewAdditions Controller
  */
-.controller('NewAdditionsCtrl', function($scope, $location, $routeParams, Imslp) {
+.controller('NewAdditionsCtrl', ['$scope', '$location', '$routeParams', 'Imslp', function($scope, $location, $routeParams, Imslp) {
 
 	$scope.title = 'New Additions';
 	$scope.disabled = false;
@@ -198,24 +198,24 @@ angular.module('imslpControllers', [
 	$scope.page = function(index) {
 		$location.path('page/' + $scope.items[index].pageid);
 	};
-})
+}])
 
 /**
  * Random Controller
  */
-.controller('RandomCtrl', function($scope, $routeParams, $location, Imslp) {
+.controller('RandomCtrl', ['$scope', '$routeParams', '$location', 'Imslp', function($scope, $routeParams, $location, Imslp) {
 
 	Imslp.random({rnnamespace:0, rnlimit:1}, function(data) {
 		if (data.query) {
 			$location.path('page/' + data.query.random[0].id);
 		}
 	});
-})
+}])
 
 /**
  * File Controller
  */
-.controller('FileCtrl', function($scope, $routeParams, $location, Imslp) {
+.controller('FileCtrl', ['$scope', '$routeParams', '$location', 'Imslp', function($scope, $routeParams, $location, Imslp) {
 
 	$scope.params = {
 		prop: 'imageinfo',
@@ -234,12 +234,12 @@ angular.module('imslpControllers', [
 			$scope.url = data.query.pages[$scope.pageid].imageinfo[0].url;
 		}
 	});
-})
+}])
 
 /**
  * Favorites Controller
  */
-.controller('FavoritesCtrl', function($scope, $routeParams, $location, $mdToast, ArrayStorage) {
+.controller('FavoritesCtrl', ['$scope', '$location', 'ArrayStorage', function($scope, $location, ArrayStorage) {
 
 	$scope.items = ArrayStorage.getAll('favorites');
 
@@ -247,19 +247,19 @@ angular.module('imslpControllers', [
 		$location.path('page/' + $scope.items[index].pageid);
 	};
 
-})
+}])
 
 /**
  * Recent Searches Controller
  */
-.controller('RecentCtrl', function($scope, $routeParams, $location, ArrayStorage) {
+.controller('RecentCtrl', ['$scope', 'ArrayStorage', function($scope, ArrayStorage) {
 	$scope.items = ArrayStorage.getAll('recent');
-})
+}])
 
 /**
  * Featured Controller
  */
-.controller('FeaturedCtrl', function($scope, $routeParams, $location, Imslp) {
+.controller('FeaturedCtrl', ['$scope', '$routeParams', '$location', 'Imslp', function($scope, $routeParams, $location, Imslp) {
 
 	$scope.featured = angular.fromJson(sessionStorage.getItem('featured'));
 	if ($scope.featured) {
@@ -297,12 +297,12 @@ angular.module('imslpControllers', [
 			}
 		});
 	};
-})
+}])
 
 /**
  * HTML Controller
  */
-.controller('HtmlCtrl', function($scope, $routeParams, $sce, $location, Imslp) {
+.controller('HtmlCtrl', ['$scope', '$routeParams', '$location', 'Imslp', '$sce', function($scope, $routeParams, $location, Imslp, $sce) {
 
 	$scope.params = {};
 	$scope.html = '';
@@ -330,4 +330,4 @@ angular.module('imslpControllers', [
 		}
 	});
 
-});
+}]);

@@ -12,7 +12,7 @@ angular.module('imslpApp', [
 	'imslpDirectives'
 ])
 
-.config(function($mdThemingProvider, $routeProvider, $sceDelegateProvider, $locationProvider) {
+.config(['$mdThemingProvider', '$routeProvider', '$locationProvider', function($mdThemingProvider, $routeProvider, $locationProvider) {
 	$mdThemingProvider.theme('default')
 		.primaryPalette('blue-grey')
 		.accentPalette('orange');
@@ -52,9 +52,6 @@ angular.module('imslpApp', [
 			controller: 'RandomCtrl'
 		})
 		.otherwise({ redirectTo: '/' });
-		//TODO: make 404 page
 
-
-
-});
+}]);
 

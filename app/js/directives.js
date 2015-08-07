@@ -8,7 +8,7 @@ angular.module('imslpDirectives', [])
 /**
  * favorite
  */
-.directive('favorite', function($mdToast, ArrayStorage) {
+.directive('favorite', ['$mdToast', 'ArrayStorage', function($mdToast, ArrayStorage) {
 	return {
 		restrict: 'E',
 		templateUrl: 'templates/favorite-directive.html',
@@ -55,4 +55,4 @@ angular.module('imslpDirectives', [])
 
 		},
 	};
-});
+}]);
