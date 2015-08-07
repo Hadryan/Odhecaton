@@ -26,8 +26,10 @@ module.exports = function(config) {
       'app/bower_components/angular-loading-bar/build/loading-bar.js',
       'app/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
+      'app/bower_components/angular-material/angular-material-mocks.js',
       'app/js/**/*.js',
-      'test/unit/**/*.js'
+      'test/unit/**/*.js',
+      'app/templates/*.html'
     ],
 
 
@@ -39,8 +41,12 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'app/templates/*.html': 'ng-html2js'
     },
 
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'app/',
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

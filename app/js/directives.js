@@ -11,7 +11,7 @@ angular.module('imslpDirectives', [])
 .directive('favorite', function($mdToast, ArrayStorage) {
 	return {
 		restrict: 'E',
-		templateUrl: 'partials/favorite-directive.html',
+		templateUrl: 'templates/favorite-directive.html',
 		scope: {
 			favitem: '='
 		},
