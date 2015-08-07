@@ -20,6 +20,7 @@ var TestData = {
 	},
 	CategoryCtrl: {
 		url: 'http://imslp.org/api.php?action=query&callback=JSON_CALLBACK&cmlimit=20&format=json&list=categorymembers',
+		urlcontinue: 'http://imslp.org/api.php?action=query&callback=JSON_CALLBACK&cmcontinue=987&cmlimit=20&format=json&list=categorymembers',
 		data: {
 			query: {
 				categorymembers: [
@@ -34,7 +35,13 @@ var TestData = {
 						title: 'Arietta con variazioni (Bach, Carl Philipp Emanuel)'
 					}
 				]
+			},
+			'query-continue': {
+				categorymembers: {
+					cmcontinue: '987'
+				}
 			}
 		}
 	}
+
 };
