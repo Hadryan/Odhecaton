@@ -12,7 +12,7 @@ angular.module('MockStorage', [])
 			getIndex: function(key, item) {
 				var items = this.getAll(key);
 				for (var i = 0; i < items.length; i++) {
-					if (item == items[i]) {
+					if (angular.equals(item, items[i])) {
 						return i;
 					}
 				}
