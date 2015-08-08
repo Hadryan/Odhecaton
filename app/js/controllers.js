@@ -305,8 +305,8 @@ angular.module('imslpControllers', [
 .controller('HtmlCtrl', ['$scope', '$routeParams', '$location', 'Imslp', '$sce', function($scope, $routeParams, $location, Imslp, $sce) {
 
 	$scope.params = {};
+	$scope.page = {};
 	$scope.html = '';
-	$scope.title = '';
 
 	if ($routeParams.pageId) {
 		$scope.params.pageid = $routeParams.pageId;
@@ -317,7 +317,10 @@ angular.module('imslpControllers', [
 
 	Imslp.parse($scope.params, function(data) {
 		if (data.parse) {
-			$scope.title = data.parse.title,
+			$scope.page = {
+				title: data.parse.title,
+				pageid: $routeParams.pageId
+			};
 			$scope.html = $sce.trustAsHtml(data.parse.text['*'].replace(/src="\//g, 'src="http://imslp.org/'));
 		}
 	});

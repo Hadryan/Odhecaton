@@ -3,8 +3,6 @@
 describe('imslpDirectives', function() {
 
 	describe('favorite', function() {
-		var store = {};
-		var page = {title:'testItem'};
 		var scope, element, template;
 
 		beforeEach(module('imslpDirectives'));
@@ -14,8 +12,8 @@ describe('imslpDirectives', function() {
 
 		beforeEach(inject(function($rootScope, $compile) {
 			scope = $rootScope.$new();
-			scope.page = {title:'test'};
-			element = angular.element('<favorite favitem="page"></favorite>');
+			scope.item = {title:'test-item'};
+			element = angular.element('<favorite favitem="item"></favorite>');
 			$compile(element)(scope);
 			scope.$digest();
 		}));
@@ -24,15 +22,22 @@ describe('imslpDirectives', function() {
 			element[0].click();
 			scope.$digest();
 			expect(element.find('div').hasClass('selected')).toBe(true);
+			expect(element.isolateScope().favitem.title).toBe('test-item');
+			expect(element.isolateScope().items.length).toBe(1);
 		});
 
 		it('should remove on second click', function() {
+			// add item
 			element[0].click();
 			scope.$digest();
 			expect(element.find('div').hasClass('selected')).toBe(true);
+			expect(element.isolateScope().favitem.title).toBe('test-item');
+			expect(element.isolateScope().items.length).toBe(1);
+			// remove item
 			element[0].click();
 			scope.$digest();
 			expect(element.find('div').hasClass('selected')).not.toBe(true);
+			expect(element.isolateScope().items.length).toBe(0);
 		});
 
 	});
