@@ -10,7 +10,7 @@ angular.module('imslpFilters', [])
  */
 .filter('replace', function() {
 	return function(input, find, replacement, flag) {
-		if (!input) return '';
+		if (!input) {return;}
 		replacement = replacement || '';
 		return input.replace(new RegExp(find, flag), replacement);
 	};

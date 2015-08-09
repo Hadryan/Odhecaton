@@ -19,13 +19,17 @@ angular.module('imslpDirectives', [])
 			$scope.items = ArrayStorage.getAll('favorites');
 
 			$scope.$watch('favitem', function(page) {
-				if (page && ArrayStorage.getIndex('favorites', page) != -1) {
+				if (page && ArrayStorage.getIndex('favorites', page) !== -1) {
 					$scope.starSelect = 'selected';
 				}
 			});
 
 			element.on('click', function(event){
-				$scope.starSelect ? $scope.removeFavorite() : $scope.addFavorite();
+				if ($scope.starSelect) {
+					$scope.removeFavorite();
+				} else {
+					$scope.addFavorite();
+				}
 				event.stopPropagation();
 			});
 
@@ -39,7 +43,7 @@ angular.module('imslpDirectives', [])
 					.position('top right')
 					.hideDelay(2000)
 				);
-			}
+			};
 
 			$scope.removeFavorite = function() {
 				var page = $scope.favitem;
@@ -51,7 +55,7 @@ angular.module('imslpDirectives', [])
 					.position('top right')
 					.hideDelay(2000)
 				);
-			}
+			};
 
 		},
 	};

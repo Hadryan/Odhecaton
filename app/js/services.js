@@ -22,7 +22,7 @@ angular.module('imslpServices', ['ngResource'])
 		},
 
 		add: function(key, item) {
-			if (this.getIndex(key, item) == -1) {
+			if (this.getIndex(key, item) === -1) {
 				var items = this.getAll(key);
 				items.push(item);
 				localStorage.setItem(key, angular.toJson(items));
@@ -34,7 +34,7 @@ angular.module('imslpServices', ['ngResource'])
 			items.splice(index, 1);
 			localStorage.setItem(key, angular.toJson(items));
 		}
-	}
+	};
 })
 
 

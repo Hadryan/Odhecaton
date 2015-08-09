@@ -54,12 +54,12 @@ angular.module('imslpControllers', [
 		$location.path($scope.search.previous);
 	};
 	$scope.searchTextChange = function(text) {
-		if (text.length < 1) return;
+		if (text.length < 1) {return;}
 		$scope.search.items = Imslp.allpages({apprefix: text});
 	};
 	$scope.search.itemSelected = function(index) {
 		var item = $scope.search.items[index];
-		if (!item) return;
+		if (!item) {return;}
 		$scope.search.text = '';
 		$scope.search.active = false;
 		ArrayStorage.add('recent', item);
@@ -84,7 +84,7 @@ angular.module('imslpControllers', [
 	}
 
 	$scope.next = function() {
-		if ($scope.disabled) return;
+		if ($scope.disabled) {return;}
 		$scope.disabled = true;
 
 		Imslp.query($scope.params, function(data) {
@@ -112,7 +112,7 @@ angular.module('imslpControllers', [
  */
 .controller('ListCtrl', ['$scope', '$location', '$routeParams', 'Imslp', function($scope, $location, $routeParams, Imslp) {
 
-	if (!$routeParams.categoryTitle) return;
+	if (!$routeParams.categoryTitle) {return;}
 
 	$scope.tabs = [0];
 	for (var i = 65; i < 91; i++) {
@@ -137,7 +137,7 @@ angular.module('imslpControllers', [
 	};
 
 	$scope.next = function() {
-		if ($scope.disabled) return;
+		if ($scope.disabled) {return;}
 		$scope.disabled = true;
 
 		Imslp.query($scope.params, function(data) {
@@ -171,7 +171,7 @@ angular.module('imslpControllers', [
 	};
 
 	$scope.next = function() {
-		if ($scope.disabled) return;
+		if ($scope.disabled) {return;}
 		$scope.disabled = true;
 
 		Imslp.query($scope.params, function(data) {
@@ -180,7 +180,7 @@ angular.module('imslpControllers', [
 				angular.forEach(data.query.recentchanges, function(item) {
 					var dup = false;
 					for (var i = 0; i < $scope.items.length; i++) {
-						if (item.pageid == $scope.items[i].pageid) {
+						if (item.pageid === $scope.items[i].pageid) {
 							dup = true;
 							break;
 						}
