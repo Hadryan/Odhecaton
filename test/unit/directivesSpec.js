@@ -21,8 +21,7 @@ describe('imslpDirectives', function() {
 		}));
 
 		it('should add on click', function() {
-			expect(arrayStorage.getAll().length).toBe(0);
-			element[0].click();
+			element.triggerHandler('click');
 			scope.$digest();
 			expect(element.find('div').hasClass('selected')).toBe(true);
 			expect(element.isolateScope().favitem.title).toBe('test-item');
@@ -31,13 +30,10 @@ describe('imslpDirectives', function() {
 
 		it('should remove on second click', function() {
 			// add item
-			element[0].click();
+			element.triggerHandler('click');
 			scope.$digest();
-			expect(element.find('div').hasClass('selected')).toBe(true);
-			expect(element.isolateScope().favitem.title).toBe('test-item');
-			expect(arrayStorage.getAll().length).toBe(1);
 			// remove item
-			element[0].click();
+			element.triggerHandler('click');
 			scope.$digest();
 			expect(element.find('div').hasClass('selected')).not.toBe(true);
 			expect(arrayStorage.getAll().length).toBe(0);
