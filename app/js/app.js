@@ -21,31 +21,31 @@ angular.module('imslpApp', [
 
 	$routeProvider
 		.when('/', {
-			templateUrl: 'partials/main-view.html'
+			templateUrl: 'templates/main-view.html'
 		})
 		.when('/category/:pageId', {
-			templateUrl: 'partials/category-view.html'
+			templateUrl: 'templates/category-view.html'
 		})
 		.when('/page/:pageId', {
-			templateUrl: 'partials/page-view.html'
+			templateUrl: 'templates/page-view.html'
 		})
 		.when('/wiki/Category:categoryTitle', {
-			templateUrl: 'partials/list-view.html'
+			templateUrl: 'templates/list-view.html'
 		})
 		.when('/wiki/File:pageTitle', {
-			templateUrl: 'partials/file-view.html',
+			templateUrl: 'templates/file-view.html',
 		})
 		.when('/wiki/:pageTitle', {
-			templateUrl: 'partials/page-view.html'
+			templateUrl: 'templates/page-view.html'
 		})
 		.when('/new-additions', {
-			templateUrl: 'partials/new-additions-view.html'
+			templateUrl: 'templates/new-additions-view.html'
 		})
 		.when('/favorites', {
-			templateUrl: 'partials/favorites-view.html'
+			templateUrl: 'templates/favorites-view.html'
 		})
 		.when('/search', {
-			templateUrl: 'partials/search-view.html'
+			templateUrl: 'templates/search-view.html'
 		})
 		.when('/random', {
 			template: '',
