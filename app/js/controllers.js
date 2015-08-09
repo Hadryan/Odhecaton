@@ -5,10 +5,8 @@
  */
 angular.module('imslpControllers', [
 	'ngSanitize',
-	'ngAnimate',
 	'ngMaterial',
 	'infinite-scroll',
-	'angular-loading-bar'
 ])
 
 /**

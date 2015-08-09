@@ -14,7 +14,6 @@ module.exports = function(config) {
       'app/bower_components/angular-material/angular-material.js',
       'app/bower_components/angular-animate/angular-animate.js',
       'app/bower_components/angular-aria/angular-aria.js',
-      'app/bower_components/angular-loading-bar/build/loading-bar.js',
       'app/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/bower_components/angular-material/angular-material-mocks.js',

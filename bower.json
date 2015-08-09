@@ -10,7 +10,6 @@
   ],
   "dependencies": {
     "angular": "~1.4.3",
-    "angular-mocks": "~1.4.3",
     "angular-material": "~0.10.0",
     "angular-animate": "~1.4.3",
     "angular-aria": "~1.4.3",
@@ -18,7 +17,9 @@
     "angular-route": "~1.4.3",
     "angular-sanitize": "~1.4.3",
     "jquery": "~2.1.4",
-    "ngInfiniteScroll": "~1.2.1",
-    "angular-loading-bar": "~0.8.0"
+    "ngInfiniteScroll": "~1.2.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.3"
   }
 }
