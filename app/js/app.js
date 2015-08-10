@@ -12,12 +12,14 @@ angular.module('imslpApp', [
 	'imslpDirectives'
 ])
 
-.config(['$mdThemingProvider', '$routeProvider', '$locationProvider', function($mdThemingProvider, $routeProvider, $locationProvider) {
+.config(['$mdThemingProvider', '$routeProvider', '$locationProvider', '$compileProvider', function($mdThemingProvider, $routeProvider, $locationProvider, $compileProvider) {
 	$mdThemingProvider.theme('default')
 		.primaryPalette('blue-grey')
 		.accentPalette('orange');
 
 	$locationProvider.html5Mode(true);
+
+	$compileProvider.debugInfoEnabled(true);
 
 	$routeProvider
 		.when('/', {
