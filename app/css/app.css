@@ -41,6 +41,7 @@ html, body {
 }
 a {
 	text-decoration: none;
+	position: relative;
 }
 a:hover {
 	text-decoration: underline;
@@ -63,10 +64,17 @@ a:hover {
 .imslp-page .hidden {
 	display: none;
 }
+.imslp-page .we_file_dlarrow {
+	margin-right: 24px;
+}
 .imslp-page .we_file_dlarrow:before {
 	content: "\21e9";
 	font-size: 24px;
 	color: orange;
+    background: white;
+    position: absolute;
+    top: -8px;
+    left: 0;
 }
 .imslp-page .we_edition_entry {
 	margin-top: 0;
