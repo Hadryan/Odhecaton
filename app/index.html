@@ -11,49 +11,44 @@
   <link rel=stylesheet href="css/app.css">
   <!-- endbuild -->
 </head>
-<body ng-controller="NavCtrl" layout="column" ng-cloak>
+<body ng-controller="NavCtrl" layout="row" ng-cloak>
 
-  <!-- Toolbar -->
-  <md-toolbar class="site-toolbar" layout="row" layout-align="center center">
-    <div class="md-toolbar-tools">
+  <!-- Sidenav -->
+  <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" flex>
+    <img id="logo" src="http://imslp.org/imslp.png" ng-click="logoClick()">
+    <md-list>
+      <md-list-item ng-repeat="item in menuItems" ng-click="nav($index)">
+        {{item.title}}
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+
+  <div class="site-body" layout="column" flex>
+    <!-- Toolbar -->
+    <md-toolbar class="site-toolbar" layout="row">
+      <!-- Button -->
       <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
         <md-icon aria-label="Menu" md-svg-icon="images/menu.svg"></md-icon>
       </md-button>
-      <h1 hide-sm><a href="/">Odhecaton</a></h1>
-    </div>
-
-    <!-- Search -->
-    <div ng-controller="SearchCtrl" flex="80" layout-padding>
-      <input type="text"
-        class="search-text"
-        placeholder="Search IMSLP"
-        ng-focus="searchFocus()"
-        ng-model="search.text"
-        ng-model-options="{debounce:300}"
-        ng-change="searchTextChange(search.text)"
-        spellcheck="false"
-        layout-fill layout-padding>
-      <span class="search-close" ng-click="searchClose()" ng-show="search.active"></span>
-    </div>
-  </md-toolbar>
-
-  <div class="site-body" layout="row">
-
-    <!-- Sidenav -->
-    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" flex>
-      <img id="logo" src="http://imslp.org/imslp.png" ng-click="toggleSidenav('left')">
-      <md-list>
-        <md-list-item ng-repeat="item in menuItems" ng-click="nav($index)">
-          {{item.title}}
-        </md-list-item>
-      </md-list>
-    </md-sidenav>
+      <!-- Search -->
+      <div ng-controller="SearchCtrl" layout-padding layout-fill>
+        <input type="text"
+          class="search-text"
+          placeholder="Search IMSLP"
+          ng-focus="searchFocus()"
+          ng-model="search.text"
+          ng-model-options="{debounce:300}"
+          ng-change="searchTextChange(search.text)"
+          spellcheck="false"
+          layout-fill layout-padding>
+        <span class="search-close" ng-click="searchClose()" ng-show="search.active"></span>
+      </div>
+    </md-toolbar>
 
     <!-- Content -->
-    <md-content class="site-content" ng-view layout-padding flex>
+    <md-content class="site-content" ng-view layout-padding>
       <!-- from partials -->
     </md-content>
-
   </div>
 
   <!-- build:js js/app.js -->

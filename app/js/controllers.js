@@ -16,6 +16,13 @@ angular.module('imslpControllers', [
 	$scope.toggleSidenav = function(menuId) {
 		$mdSidenav(menuId).toggle();
 	};
+	$scope.logoClick = function() {
+		if ($mdSidenav('left').isLockedOpen()) {
+			$location.path('/');
+		} else {
+			$mdSidenav('left').toggle();
+		}
+	};
 	$scope.nav = function(index) {
 		$location.path($scope.menuItems[index].path);
 		$mdSidenav('left').close();

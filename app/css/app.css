@@ -1,23 +1,30 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+	display: none !important;
 }
 html, body {
-  height: auto; /*needed for infinite-scroll*/
+	height: auto; /*needed for infinite-scroll*/
 }
 #logo {
 	width: 155px;
 	height: 155px;
 	margin: 15px;
+	outline: 0;
 }
 .site-body {
-	min-height: 92vh;
+	min-height: 100vh;
+}
+.site-toolbar {
+	height: auto;
+	min-height: auto;
 }
 .site-sidenav,
 .site-sidenav.md-locked-open {
-  width: 224px;
-  min-width: 224px;
-  max-width: 224px;
-  background: #eeefee;
+	width: 224px;
+	min-width: 224px;
+	max-width: 224px;
+	min-height: 100vh;
+	background: #eeefee;
+	border-right: 1px solid #cccdcc;
 }
 .search-text {
 	font-size: 16px;
@@ -29,7 +36,7 @@ html, body {
 	font-size: 28px;
 	color: #666;
 	position: absolute;
-	top: 11px;
+	top: 5px;
 	right: 18px;
 }
 a {
