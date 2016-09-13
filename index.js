@@ -6,5 +6,5 @@ var port = process.env.PORT || 3000;
 app.use(express.static('app'));
 
 app.listen(port, function () {
-  console.log('listening on port 3000...');
+  console.log('Listening on port ' + port);
 });

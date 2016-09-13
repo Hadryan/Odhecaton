@@ -1,7 +1,7 @@
 <div ng-controller="ListCtrl">
   <h1>{{ title }}</h1>
   <md-content class="tabs" ng-show="tabs">
-    <md-tabs md-no-pagination="false">
+    <md-tabs md-no-pagination="false" md-dynamic-height="true">
       <md-tab label="{{tab}}" ng-repeat="tab in tabs" md-on-select="selected($index)">
       </md-tab>
     </md-tabs>
