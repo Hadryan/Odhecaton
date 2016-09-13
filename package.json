@@ -1,13 +1,16 @@
 {
   "name": "odhecaton",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "IMSLP mobile app",
   "author": "Larry Wright",
   "license": "MIT",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {
+  "main": "index.js",
+  "dependencies": {
     "bower": "^1.4.1",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
     "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-angular-templatecache": "^1.7.0",
@@ -29,6 +32,7 @@
   "scripts": {
     "postinstall": "bower install",
     "test": "karma start",
-    "test-single-run": "karma start --single-run"
+    "test-single-run": "karma start --single-run",
+    "start": "node ./index.js"
   }
 }

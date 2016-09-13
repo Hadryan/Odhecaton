@@ -5,8 +5,8 @@ html, body {
 	height: auto; /*needed for infinite-scroll*/
 }
 #logo {
-	width: 155px;
-	height: 155px;
+	width: 140px;
+	height: 62px;
 	margin: 15px;
 	outline: 0;
 }
